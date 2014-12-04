@@ -25,3 +25,11 @@ optional arguments:
   -u USERNAME, --username USERNAME
                         The name of the user whose images you want to download
 ```
+
+instagram-image-dumper.sh
+--------------------------
+Bash version of the script
+
+```
+root@example.org:~# bash instagram-image-dumper.sh instaname
+```
