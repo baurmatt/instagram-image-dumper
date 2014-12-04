@@ -2,7 +2,9 @@ instagram-image-dumper
 ======================
 
 A Github Repo for Instagram image dumper scripts
-No license! Do what ever you want with it!
+No license for the instagram-image-dumper.ps1 and instagram-image-dumper.py! Do what ever you want with it!
+
+instagram-image-dumper.sh is licensed under GPL
 
 instagram-image-dumper.ps1
 --------------------------
