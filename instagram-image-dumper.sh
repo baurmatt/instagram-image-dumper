@@ -27,19 +27,14 @@
 # account_name = "$1"
 wget -q "http://instagram.com/${1}/media" -O media
 
-if [[ "$1" ]]
+if [[ ! "$1" ]]
 then
-  if [[ -d "$1" ]]
-  then
-    echo "$1 has already been downloaded, delete it first"
-    exit
-  else
-    echo "Starting"
-    mkdir "$1"
-  fi
-else
   echo "No Instagram Account"
   exit
+fi
+if [[ ! -d "$1" ]]
+then
+  mkdir "$1"
 fi
 
 # Do a loop until no media is available
@@ -61,6 +56,21 @@ done
 # Now download
 mv urls "$1"/urls
 cd "$1"
-wget -nv -i urls
-rm urls
+while read line
+do
+  fname=$(echo "$line" | sed 's/.*\/\(.*\.jpg\)/\1/g')
+  if [[ ! -e "$fname" ]]
+  then
+    echo "$line" >> newurls
+  fi
+done < urls
+if [[ -e newurls ]]
+then
+  wget -nv -i newurls
+  rm newurls
+fi
+if [[ -e urls ]]
+then
+  rm urls
+fi
 cd ..
