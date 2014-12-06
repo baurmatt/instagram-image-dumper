@@ -53,6 +53,8 @@ do
   fi
 done
 
+rm media
+
 # Now download
 mv urls "$1"/urls
 cd "$1"
